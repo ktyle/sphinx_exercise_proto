@@ -1,0 +1,66 @@
+Running Jupyter-Book v0.11.2
+[etoc] Changing master_doc to 'intro'
+Extension error (sphinx_exercise):
+Handler <class 'sphinx_exercise.DoctreeResolve'> for event 'doctree-resolved' threw an exception (exception: )
+Traceback (most recent call last):
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/domains/std.py", line 1110, in get_fignumber
+    return env.toc_fignumbers[docname][figtype][figure_id]
+KeyError: 'ex'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/events.py", line 111, in emit
+    results.append(listener.handler(self.app, *args))
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx_exercise/__init__.py", line 126, in __init__
+    self.process(doctree, docname)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx_exercise/__init__.py", line 313, in process
+    self._update_linked_node_title(node)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx_exercise/__init__.py", line 154, in _update_linked_node_title
+    target_number = self.domain.get_fignumber(
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/domains/std.py", line 1114, in get_fignumber
+    raise ValueError from exc
+ValueError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/jupyter_book/sphinx.py", line 167, in build_sphinx
+    app.build(force_all, filenames)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/application.py", line 352, in build
+    self.builder.build_update()
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/builders/__init__.py", line 296, in build_update
+    self.build(to_build,
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/builders/__init__.py", line 360, in build
+    self.write(docnames, list(updated_docnames), method)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/builders/__init__.py", line 534, in write
+    self._write_serial(sorted(docnames))
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/builders/__init__.py", line 541, in _write_serial
+    doctree = self.env.get_and_resolve_doctree(docname, self)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/environment/__init__.py", line 539, in get_and_resolve_doctree
+    self.apply_post_transforms(doctree, docname)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/environment/__init__.py", line 590, in apply_post_transforms
+    self.events.emit('doctree-resolved', doctree, docname)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/sphinx/events.py", line 119, in emit
+    raise ExtensionError(__("Handler %r for event %r threw an exception") %
+sphinx.errors.ExtensionError: Handler <class 'sphinx_exercise.DoctreeResolve'> for event 'doctree-resolved' threw an exception (exception: )
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/path/to/envs/atm433/bin/jb", line 10, in <module>
+    sys.exit(main())
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/click/core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/click/core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/click/core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/click/core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/jupyter_book/cli/main.py", line 316, in build
+    builder_specific_actions(
+  File "/path/to/envs/atm433/lib/python3.8/site-packages/jupyter_book/cli/main.py", line 516, in builder_specific_actions
+    raise RuntimeError(_message_box(msg, color="red", doprint=False)) from result
